@@ -98,6 +98,13 @@ namespace nall {
   constexpr auto platform() -> Platform { return Platform::Horizon; }
   constexpr auto api() -> API { return API::Posix; }
   constexpr auto display() -> DisplayServer { return DisplayServer::Unknown; }
+#elif defined(__EMSCRIPTEN__)
+  #define PLATFORM_LINUX
+  #define API_POSIX
+  #define DISPLAY_UNKNOWN
+  constexpr auto platform() -> Platform { return Platform::Linux; }
+  constexpr auto api() -> API { return API::Posix; }
+  constexpr auto display() -> DisplayServer { return DisplayServer::Unknown; }
 #elif defined(linux) || defined(__linux__)
   #define PLATFORM_LINUX
   #define API_POSIX

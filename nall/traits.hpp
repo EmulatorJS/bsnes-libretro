@@ -40,7 +40,7 @@ namespace nall {
 }
 
 namespace std {
-  #if INTMAX_BITS >= 128
+  #if INTMAX_BITS >= 128 && !defined(__EMSCRIPTEN__)
   template<> struct is_signed<int128_t> : true_type {};
   template<> struct is_unsigned<uint128_t> : true_type {};
   #endif
